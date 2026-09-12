@@ -1,11 +1,11 @@
-const { Routes } = require("discord.js");
+const {Routes} = require("discord.js");
 const path = require("path");
 const fg = require("fast-glob");
 
 module.exports = {
     loadCommands(client) {
         const commandsFolder = path.join(__dirname, "..", "commands");
-        const commandPaths = fg.sync("**/*.js", { cwd: commandsFolder, absolute: true })
+        const commandPaths = fg.sync("**/*.js", {cwd: commandsFolder, absolute: true})
 
         let loaded = 0;
         let failed = false;
@@ -42,7 +42,7 @@ module.exports = {
         try {
             const body = [...client.commands.values()].map(cmd => cmd.data.toJSON());
             result = await rest.put(Routes.applicationGuildCommands(
-                process.env.BOT_CLIENT_ID, process.env.GUILD_ID), { body });
+                process.env.BOT_CLIENT_ID, process.env.GUILD_ID), {body});
         } catch (e) {
             console.error(`Error while deploying commands:\n${e}`);
             return;

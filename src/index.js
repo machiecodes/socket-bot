@@ -1,5 +1,5 @@
-const { Client, Collection, GatewayIntentBits, REST } = require("discord.js");
-const { loadCommands, deployCommands } = require("./handlers/command-handler.js");
+const {Client, Collection, GatewayIntentBits, REST} = require("discord.js");
+const {loadCommands, deployCommands} = require("./handlers/command-handler.js");
 const loadEvents = require("./handlers/event-handler.js");
 
 require("dotenv").config();

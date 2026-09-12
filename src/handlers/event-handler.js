@@ -3,7 +3,7 @@ const fg = require("fast-glob");
 
 module.exports = function loadEvents(client) {
     const eventsFolder = path.join(__dirname, "..", "events");
-    const eventPaths = fg.sync("**/*.js", { cwd: eventsFolder, absolute: true })
+    const eventPaths = fg.sync("**/*.js", {cwd: eventsFolder, absolute: true})
 
     let loaded = 0;
     let failed = false;
