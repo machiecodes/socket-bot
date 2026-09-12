@@ -31,6 +31,7 @@ module.exports = function loadEvents(client) {
 
     if (failed) {
         console.error("Failed to register one or more events, exiting.");
+        client.destroy();
         process.exit(1);
     } else {
         console.log(`Finished; registered ${loaded} events\n`);

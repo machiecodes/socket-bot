@@ -22,5 +22,9 @@ loadEvents(client);
     const rest = new REST().setToken(process.env.BOT_TOKEN);
     await deployCommands(client, rest);
 
-    await client.login(process.env.BOT_TOKEN).catch(e => console.error(`Error while logging in: ${e}`));
+    await client.login(process.env.BOT_TOKEN).catch(e => {
+        console.error(`Error while logging in: ${e}`)
+        client.destroy();
+        process.exit(1);
+    });
 })();

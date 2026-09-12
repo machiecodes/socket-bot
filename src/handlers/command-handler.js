@@ -28,7 +28,8 @@ module.exports = {
         });
 
         if (failed) {
-            console.error("Failed to load one or more commands, exiting.");
+            console.error("Failed to load one or more commands, exiting");
+            client.destroy();
             process.exit(1);
         } else {
             console.log(`Finished; loaded ${loaded} commands\n`);
@@ -45,7 +46,8 @@ module.exports = {
                 process.env.BOT_CLIENT_ID, process.env.GUILD_ID), {body});
         } catch (e) {
             console.error(`Error while deploying commands:\n${e}`);
-            return;
+            client.destroy();
+            process.exit(1);
         }
 
         console.log(`Finished; deployed ${result.length} commands\n`);
