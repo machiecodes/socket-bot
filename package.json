@@ -1,0 +1,33 @@
+{
+  "name": "quiz-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/machiecodes/quiz-bot.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/machiecodes/quiz-bot/issues"
+  },
+  "homepage": "https://github.com/machiecodes/quiz-bot#readme",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "bufferutil": "^4.1.0",
+    "discord.js": "^14.27.0",
+    "fast-glob": "^3.3.3",
+    "node-cron": "^4.6.0",
+    "zlib-sync": "^0.1.10"
+  },
+  "allowScripts": {
+    "bufferutil@4.1.0": true,
+    "zlib-sync@0.1.10": true,
+    "better-sqlite3@13.0.3": true
+  }
+}
