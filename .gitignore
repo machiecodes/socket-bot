@@ -1,4 +1,4 @@
-src/config.json
+.env
 .idea/
 node_modules/
 

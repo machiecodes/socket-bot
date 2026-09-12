@@ -1,7 +1,6 @@
 const { Routes } = require("discord.js");
 const path = require("path");
 const fg = require("fast-glob");
-const { BOT_CLIENT_ID, GUILD_ID } = require("../config.json");
 
 module.exports = {
     loadCommands(client) {
@@ -42,7 +41,8 @@ module.exports = {
 
         try {
             const body = [...client.commands.values()].map(cmd => cmd.data.toJSON());
-            result = await rest.put(Routes.applicationGuildCommands(BOT_CLIENT_ID, GUILD_ID), { body });
+            result = await rest.put(Routes.applicationGuildCommands(
+                process.env.BOT_CLIENT_ID, process.env.GUILD_ID), { body });
         } catch (e) {
             console.error(`Error while deploying commands:\n${e}`);
             return;
