@@ -7,10 +7,11 @@ module.exports = {
         const commandsFolder = path.join(__dirname, "..", "commands");
         const commandPaths = fg.sync("**/*.js", {cwd: commandsFolder, absolute: true})
 
-        let loaded = 0;
+        let loadedNormals = 0;
+        let loadedSubs = 0;
         let failed = false;
 
-        console.log(`Loading ${commandPaths.length} commands...`);
+        console.log(`Discovered ${commandPaths.length} commands, loading...`);
 
         commandPaths.forEach(path => {
             const command = require(path);
@@ -21,10 +22,15 @@ module.exports = {
                 return;
             }
 
+            if (command.isSub) {
+                loadedSubs++;
+                return;
+            }
+
             //noinspection JSIgnoredPromiseFromCall
             client.commands.set(command.data.name, command);
-            console.log(`Loaded command /${command.data.name} successfully.`);
-            loaded++;
+            console.log(`Loaded command /${command.data.name} successfully`);
+            loadedNormals++;
         });
 
         if (failed) {
@@ -32,7 +38,7 @@ module.exports = {
             client.destroy();
             process.exit(1);
         } else {
-            console.log(`Finished; loaded ${loaded} commands\n`);
+            console.log(`Finished; loaded ${loadedNormals} commands, ${loadedSubs} subcommands\n`);
         }
     },
     async deployCommands(client, rest) {
