@@ -15,7 +15,7 @@ module.exports = {
         commandPaths.forEach(path => {
             const command = require(path);
 
-            if (!command.data || typeof command.run !== "function") {
+            if (command.data === undefined || command.run === undefined) {
                 console.error(`Loading command ${path} failed; missing required attributes.`);
                 failed = true;
                 return;

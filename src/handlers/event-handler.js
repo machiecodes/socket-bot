@@ -13,7 +13,7 @@ module.exports = function loadEvents(client) {
     eventPaths.forEach(path => {
         const event = require(path);
 
-        if (!event.name || !event.once || typeof event.run !== "function") {
+        if (event.name === undefined || event.once === undefined || event.run === undefined) {
             console.error(`Registering event ${path} failed; missing required attributes.`);
             failed = true;
             return;
